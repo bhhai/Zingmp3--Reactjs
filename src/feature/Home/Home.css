@@ -1,0 +1,26 @@
+.home-page {
+  background-color: #170f23;
+  width: 100%;
+}
+
+.home-container {
+  width: 92%;
+  margin: auto;
+}
+
+.home__slide {
+  padding: 30px 0;
+}
+
+.home__topic-block {
+
+}
+
+.home__topic-title {
+  color: #fff;
+  font-size: 20px;
+}
+
+.home__new-title {
+  color: #fff;
+}

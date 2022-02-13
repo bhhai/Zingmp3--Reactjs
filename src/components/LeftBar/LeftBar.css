@@ -1,0 +1,49 @@
+.left {
+  background-color: #231b2e;
+  color: #dadee2;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border: 1px solid #010101;
+  width: inherit;
+}
+
+.left__logo {
+  width: 100%;
+  font-size: 22px;
+  margin: 20px 0;
+}
+
+.left__logo > img {
+  height: 40px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.left_menu {
+  width: 100%;
+}
+.menu__item {
+  display: flex;
+  align-items: center;
+  padding: 7px;
+  padding-left: 20px;
+  color: #d9d9d9;
+}
+
+.menu__item:hover {
+  color: #fff;
+}
+
+.active {
+  background-color: rgba(255, 255, 255, .15);
+  border-left: 3px solid #7200a1;
+}
+
+.menu__item > span {
+  margin-left: 5px;
+  font-weight: 600;
+  font-size: 15px;
+}
