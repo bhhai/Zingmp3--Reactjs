@@ -1,0 +1,43 @@
+
+
+.player__center {
+  width: 50%;
+}
+
+.center__control {
+  
+}
+
+.center__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center__control-item {
+  margin: 0 10px;
+  background-color: transparent;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.center__control-item:hover {
+  background-color: rgba(255, 255, 255, .1);
+}
+
+.mid-play {
+  height: 36px;
+  width: 36px;
+  border: 2px solid #fff;
+}
+
+.mid-play:hover {
+  color: blueviolet;
+  border-color: blueviolet;
+  background-color: transparent;
+}

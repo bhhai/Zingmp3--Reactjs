@@ -28,12 +28,49 @@ function TopicSlide({ data }) {
         {data &&
           data.map((item, index) => (
             <SwiperSlide key={index}>
-              <TopicCard src={item.thumbnail} title={item.title} />
+              <TopicCard
+                src={item.thumbnailM || item.thumbnail || item.thumbURL}
+                title={item.title}
+                playlistKey={item.encodeId}
+                description={
+                  item.sortDescription ||
+                  item.releaseDate ||
+                  item.activeUsers + " đang nghe"
+                }
+                link={item.link}
+              />
             </SwiperSlide>
           ))}
       </Swiper>
     </div>
   );
 }
+
+export const ZingChoiceSlide = ({ data }) => {
+  return (
+    <div className="zing-choice">
+      <Swiper
+        spaceBetween={25}
+        slidesPerView={5}
+        autoplay={{
+          delay: 5000,
+        }}
+      >
+        {data.map((item, i) => (
+          <SwiperSlide key={item.encodeId}>
+            <TopicCard
+              src={item.thumbnail || item.thumbURL}
+              title={item.title}
+              playlistKey={item.encodeId}
+              description={""}
+              link={item.link}
+              release={item.releaseDate}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
+};
 
 export default TopicSlide;

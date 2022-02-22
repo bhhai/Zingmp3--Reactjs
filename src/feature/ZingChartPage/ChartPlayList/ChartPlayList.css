@@ -1,0 +1,125 @@
+
+
+.chart-page__playlist {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.chart-playlist__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  padding: 10px 0 5px 0;
+  border-bottom: 1px solid hsla(0,0%,100%,0.05);
+  border-radius: 5px;
+}
+
+.chart-playlist__item:hover {
+  background-color: #2f2739;
+}
+
+
+
+.chart-playlist__item .playlist__item-position {
+  width: 6%;
+  display: flex;
+  align-items: center;
+}
+
+.chart-playlist__item .playlist__item-position span {
+  opacity: 1; -webkit-text-stroke: 1px #4a90e2; 
+  font-size: 32px; 
+  font-weight: 900; 
+  color: transparent; 
+  line-height: 1; 
+  font-family: "Roboto",sans-serif;
+  margin: 0 20px;
+}
+
+
+
+.playlist__item-title {
+  width: 40%;
+  display: flex;
+}
+
+.playlist__item-title .playlist__name {
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.playlist__album {
+  width: 40%;
+}
+
+.playlist__thumbnail {
+  width: 40px;
+  position: relative;
+  cursor: pointer;
+}
+
+.chart-playlist__item:hover .thumb__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 5px;
+}
+
+.thumb__icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+
+.chart-playlist__item:hover .thumb__icon {
+  visibility: visible;
+}
+
+.playlist__thumbnail img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.playlist__thumbnail > :last-child {
+  position: absolute;
+  left: -35px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: hsla(0,0%,100%,0.5);
+}
+
+.playlist__artist .artist {
+  color: hsla(0,0%,100%,0.5);
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+.playlist__artist .artist:hover {
+  color: blueviolet;
+}
+
+.playlist__album {
+  color: hsla(0,0%,100%,0.5);
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+.playlist__album:hover {
+  color: blueviolet;
+  text-decoration: underline;
+}
+
+.playlist__duration {
+  color: hsla(0,0%,100%,0.5);
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  padding-right: 20px;
+}

@@ -1,0 +1,65 @@
+
+.player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background-color: #120c1c;
+  z-index: 999 !important;
+  border-top: 1px solid hsla(0,0%,100%,0.1);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.player__left {
+  display: flex;
+  align-items: center;
+  width: 20%;
+}
+
+.left__thumb {
+  width: 65px;
+  margin-right: 10px;
+}
+
+.left__thumb > img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.left__name {
+  margin: 0;
+  font-size: 14px;
+}
+
+.left__artist {
+  margin: 0;
+}
+
+.artist {
+  font-size: 10px !important;
+}
+
+
+/* right */
+
+.player__right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 20%;
+}
+
+.player__right-icon {
+  margin-left: 15px;
+}
+
+.volumn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}

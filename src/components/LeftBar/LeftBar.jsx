@@ -33,9 +33,9 @@ function LeftBar(props) {
           <ExploreIcon />
           <span>Khám phá</span>
         </NavLink>
-        <NavLink to="/chart" className="menu__item">
+        <NavLink to="/zing-chart" className="menu__item">
           <BarChartIcon />
-          <span>BXH</span>
+          <span>#zingchart</span>
         </NavLink>
       </div>
     </div>

@@ -16,14 +16,13 @@ HeroSlider.propTypes = {};
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
-function HeroSlider(props) {
+function HeroSlider({ slider }) {
   const [heroSlide, setHeroSlide] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
       const response = await NhacCuaTui.getHome();
       setHeroSlide(response.showcase);
-      console.log(response);
     };
 
     getData();
@@ -41,10 +40,10 @@ function HeroSlider(props) {
       }}
       navigation={true}
     >
-      {heroSlide.map((item, index) => (
+      {slider.map((item, index) => (
         <SwiperSlide key={index}>
           <img
-            src={item.thumbnail}
+            src={item.banner}
             alt={item.title}
             style={{
               width: "100%",

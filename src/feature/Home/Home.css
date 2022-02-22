@@ -23,4 +23,11 @@
 
 .home__new-title {
   color: #fff;
+  font-size: 20px;
 }
+
+.home__new-release {
+  padding-bottom: 10px;
+}
+
+

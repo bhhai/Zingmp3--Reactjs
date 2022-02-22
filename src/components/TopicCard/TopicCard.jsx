@@ -4,12 +4,13 @@ import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import "./TopicCard.css";
+import { Link } from "react-router-dom";
 
 TopicCard.propTypes = {};
 
-function TopicCard({ src, title }) {
+function TopicCard({ src, title, playlistKey, description, link, release }) {
   return (
-    <div className="topic">
+    <Link to={link} className="topic">
       <div className="topic__thumbnail">
         <img src={src} alt={title} className="topic__image" />
         <div className="topic__icon">
@@ -24,7 +25,12 @@ function TopicCard({ src, title }) {
         <div className="overlay"></div>
       </div>
       <h3 className="topic__title">{title}</h3>
-    </div>
+      <span className="topic__description">
+        {description.length > 100
+          ? description.slice(0, 87) + "..."
+          : description || release}
+      </span>
+    </Link>
   );
 }
 

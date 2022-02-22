@@ -1,0 +1,40 @@
+
+.zing-chart {
+  position: relative;
+  width: 100%;
+  background-image: url("https://zjs.zadn.vn/zmp3-desktop/releases/v1.5.13/static/media/bg-chart.fd766403.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+.zing-chart__container {
+  justify-content: space-between;
+  display: flex;
+  padding: 20px 0;
+}
+
+.zing-chart__overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(180deg,#740091,#2d1a4c);
+  opacity: .9;
+}
+
+.chart__song {
+  width: 36%;
+  z-index: 10;
+}
+
+.chart__chart {
+  z-index: 10;
+  width: 60%;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+}

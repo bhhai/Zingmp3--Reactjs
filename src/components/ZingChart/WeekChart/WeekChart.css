@@ -1,0 +1,17 @@
+
+.week-chart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.week-chart__banner {
+  width: 30%;
+  border-radius: 10px;
+}
+
+.week-chart__banner > img {
+  width: 100%;
+  border-radius: 10px;
+}

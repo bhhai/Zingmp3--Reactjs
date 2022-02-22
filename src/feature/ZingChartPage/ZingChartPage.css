@@ -1,0 +1,35 @@
+
+
+.chart-page {
+  position: relative;
+  background-color: #170f23;
+}
+
+
+.top__chart {
+  position: relative;
+  height: 300px;
+  width: 90%;
+  margin: auto;
+}
+
+
+.top__title {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  width: 90%;
+  margin: auto;
+  padding: 30px 0;
+  font-size: 28px;
+}
+
+.top__title > h2 {
+  margin: 0;
+}
+
+.top__title > :last-child {
+  color: #7200a1;
+  font-size: 50px;
+  margin-left: 3px;
+}
