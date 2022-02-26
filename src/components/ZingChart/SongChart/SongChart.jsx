@@ -36,7 +36,6 @@ function SongChart(props) {
           key={item.encodeId}
           onClick={() => getSongId(item.encodeId)}
         >
-          {songId ? <Player id={songId} /> : console.log("ko co songid")}
           <div className="song__count">{i + 1}</div>
           <div className="song__item">
             <div className="song__thumbnail">

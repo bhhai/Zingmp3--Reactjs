@@ -71,6 +71,39 @@
   border-radius: 5px;
 }
 
+
+/* Active playing */
+
+.chart-playlist__item.playing-active {
+  background-color: #2f2739;
+}
+
+.chart-playlist__item.playing-active > .playlist__item-title > .playlist__thumbnail > .playing-gif {
+  position: absolute;
+  
+  background-image: url("https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/icons/icon-playing.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 50%;
+  left: 50%;
+  bottom: 4px;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+}
+
+.chart-playlist__item.playing-active > .playlist__item-title > .playlist__thumbnail > .thumb__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 5px;
+}
+
+
 .thumb__icon {
   position: absolute;
   top: 50%;
