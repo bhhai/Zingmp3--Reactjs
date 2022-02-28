@@ -114,6 +114,7 @@
 .center__slider {
   display: flex;
   align-items: center;
+  margin-top: 5px;
 }
 
 .center__time {
@@ -137,12 +138,21 @@
 
 .music-player-controls__time__progress {
   width: 100%;
-  height: 15px;
+  display: flex;
 }
+
 
 .music-player-controls__time__progress > input {
   width: 100%;
+  height: 3px;
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
+}
+
+
+/* Hidden player */
+
+.player.hidden {
+  visibility: hidden;
 }

@@ -24,7 +24,6 @@ function ZingChartPage(props) {
       setPlayList(response.data.RTChart.items);
 
       dispatch(setPlayingPlaylist(response.data.RTChart.items));
-      dispatch(setPlayingSong(response.data.RTChart.items[0].encodeId));
     };
 
     getData();

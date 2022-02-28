@@ -29,12 +29,10 @@ function Player({ id }) {
   const playingSong = useSelector((state) => state.music.playingSong);
   const playingPlaylist = useSelector((state) => state.music.playingPlaylist);
 
-  const [listSong, setListSong] = useState([]);
   const [song, setSong] = useState();
   const [infoSong, setInfoSong] = useState();
 
   const [valueVolume, setValueVolume] = useState(60);
-  const [nextSongId, setNextSongId] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const [position, setPosition] = useState(0);
@@ -58,12 +56,13 @@ function Player({ id }) {
       try {
         const response = await musicApi.getSong(playingSong);
         const getInfo = await musicApi.getInfoSong(playingSong);
-        const list = await musicApi.getCharthome();
+
+        console.log(getInfo);
 
         setSong(response.data);
         setInfoSong(getInfo.data);
-        setListSong(list.data.RTChart.items);
 
+        if (playingSong) setIsPlaying(true);
         setLoading(false);
       } catch (error) {}
     };
@@ -105,6 +104,7 @@ function Player({ id }) {
       };
       // Khi endSong
       audio.current.onended = () => {
+        setIsPlaying(false);
         if (this.isRepeat) {
           audio.current.play();
         } else {
@@ -148,7 +148,6 @@ function Player({ id }) {
 
   useEffect(() => {
     handle.start();
-    console.log(handle.isPlaying);
   }, [
     playingPlaylist.length,
     playingSong,
@@ -161,16 +160,6 @@ function Player({ id }) {
     setValueVolume(newValue);
   };
 
-  const handleNextSong = () => {
-    dispatch(setNextSong());
-    setNextSongId(nextSongId);
-  };
-
-  const handlePrevSong = () => {
-    dispatch(setPrevSong());
-    setNextSongId(nextSongId);
-  };
-
   function formatDuration(value) {
     const minute = Math.floor(value / 60);
     const secondLeft = value - minute * 60;
@@ -181,7 +170,7 @@ function Player({ id }) {
 
   return (
     <>
-      <div className={`player ${playingSong ? "" : "hidden"}`}>
+      <div className={`player ${playingSong.length === 0 ? "hidden" : ""}`}>
         <div className="player__left">
           <audio
             src={song && song[Object.keys(song)[0]]}
@@ -195,19 +184,14 @@ function Player({ id }) {
             <h4 className="left__name">{infoSong?.title}</h4>
             <div className="left__artist">
               {infoSong?.artists.length > 1
-                ? infoSong?.artists.map((item, i) => {
-                    let len = infoSong?.artists.length;
-                    return (
-                      <Link
-                        to={item.link}
-                        key={item.artistId}
-                        className="artist"
-                      >
-                        {len - 1 === i ? item.name + "" : item.name + ",  "}
-                      </Link>
-                    );
-                  })
-                : infoSong?.artists.map((item, i) => (
+                ? infoSong?.artists.map((item, i) => (
+                    <Link key={item.artistId} to={item.link} className="artist">
+                      {infoSong?.artists.length - 1 === i
+                        ? item.name + ""
+                        : item.name + ",  "}
+                    </Link>
+                  ))
+                : infoSong?.artists.map((item) => (
                     <Link to={item.link} key={item.artistId} className="artist">
                       {item.name}
                     </Link>
@@ -228,7 +212,10 @@ function Player({ id }) {
               >
                 <ShuffleIcon />
               </div>
-              <div className="center__control-item" onClick={handlePrevSong}>
+              <div
+                className="center__control-item"
+                onClick={() => dispatch(setPrevSong())}
+              >
                 <SkipPreviousIcon />
               </div>
               <div
@@ -238,7 +225,10 @@ function Player({ id }) {
               >
                 {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
               </div>
-              <div className="center__control-item" onClick={handleNextSong}>
+              <div
+                className="center__control-item"
+                onClick={() => dispatch(setNextSong())}
+              >
                 <SkipNextIcon />
               </div>
               <div
@@ -259,7 +249,13 @@ function Player({ id }) {
                 {formatDuration(position)}
               </span>
               <div className="music-player-controls__time__progress">
-                <input type="range" min="0" max="100" ref={timeProgress} />
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  defaultValue={0}
+                  ref={timeProgress}
+                />
               </div>
               <span
                 className="center__time center__time-right"

@@ -1,13 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import RemoveIcon from "@mui/icons-material/Remove";
-import { Link, NavLink } from "react-router-dom";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import "./ChartPlayList.css";
-import Player from "../../../components/Player/Player";
-import { useState } from "react";
+import RemoveIcon from "@mui/icons-material/Remove";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { setPlayingSong } from "../musicSlice";
+import "./ChartPlayList.css";
 
 ChartPlayList.propTypes = {};
 
@@ -25,16 +22,16 @@ function ChartPlayList({ data }) {
     }`;
   }
 
-  function findElement(e) {
-    const element = e.target;
-    const key = element
-      .closest(".chart-playlist__item")
-      .getAttribute("data-key");
+  // function findElement(e) {
+  //   const element = e.target;
+  //   const key = element
+  //     .closest(".chart-playlist__item")
+  //     .getAttribute("data-key");
 
-    setSongId(key);
-    dispatch(setPlayingSong(key));
-    return key;
-  }
+  //   setSongId(key);
+  //   dispatch(setPlayingSong(key));
+  //   return key;
+  // }
   return (
     <div className="chart-page__playlist">
       {data &&
@@ -45,7 +42,7 @@ function ChartPlayList({ data }) {
               playingSong === item.encodeId ? "playing-active" : ""
             }`}
             data-key={item.encodeId}
-            onClick={(e) => findElement(e)}
+            onClick={() => dispatch(setPlayingSong(item?.encodeId))}
           >
             <div className="playlist__item-position">
               <span>{i + 1}</span>
