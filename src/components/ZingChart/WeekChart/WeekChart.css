@@ -15,3 +15,14 @@
   width: 100%;
   border-radius: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+  .week-chart {
+    flex-direction: column;
+  }
+
+  .week-chart__banner {
+    width: 100%;
+    margin: 10px 0;
+  }
+}

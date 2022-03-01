@@ -110,3 +110,9 @@
   color: #c662ef;
   text-decoration: underline;
 }
+
+@media only screen and (max-width: 1024px) {
+  .song__chart {
+    margin:  15px;
+  }
+}

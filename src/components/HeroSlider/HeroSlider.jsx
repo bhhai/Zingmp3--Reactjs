@@ -11,27 +11,17 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 import "./HeroSlider.css";
+import LoadingHeroSlide from "./LoadingHeroSlide/LoadingHeroSlide";
 
 HeroSlider.propTypes = {};
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
-function HeroSlider({ slider }) {
-  const [heroSlide, setHeroSlide] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      const response = await NhacCuaTui.getHome();
-      setHeroSlide(response.showcase);
-    };
-
-    getData();
-  }, []);
-
+function HeroSlider({ slider, loading }) {
   return (
     <Swiper
+      className="mobile__nav"
       spaceBetween={25}
-      slidesPerView={3}
       autoplay={{
         delay: 5000,
       }}
@@ -39,21 +29,38 @@ function HeroSlider({ slider }) {
         clickable: true,
       }}
       navigation={true}
+      breakpoints={{
+        // when window width is >= 640px
+        640: {
+          slidesPerView: 1,
+        },
+        // when window width is >= 768px
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      }}
     >
-      {slider.map((item, index) => (
-        <SwiperSlide key={index}>
-          <img
-            src={item.banner}
-            alt={item.title}
-            style={{
-              width: "100%",
-              height: "220px",
-              objectFit: "cover",
-              borderRadius: "20px",
-            }}
-          />
-        </SwiperSlide>
-      ))}
+      {loading ? (
+        <LoadingHeroSlide />
+      ) : (
+        slider.map((item, index) => (
+          <SwiperSlide key={index}>
+            <img
+              src={item.banner}
+              alt={item.title}
+              style={{
+                width: "100%",
+                height: "220px",
+                objectFit: "cover",
+                borderRadius: "20px",
+              }}
+            />
+          </SwiperSlide>
+        ))
+      )}
     </Swiper>
   );
 }

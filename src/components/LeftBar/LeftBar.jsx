@@ -5,20 +5,29 @@ import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
 import ExploreIcon from "@mui/icons-material/Explore";
 import BarChartIcon from "@mui/icons-material/BarChart";
+import SortIcon from "@mui/icons-material/Sort";
 import "./LeftBar.css";
 
 import { Link, NavLink } from "react-router-dom";
+import { Avatar } from "@mui/material";
 
 LeftBar.propTypes = {};
 
 function LeftBar(props) {
   return (
     <div className="left">
+      <div className="left__mobile-icon">
+        <SortIcon />
+      </div>
       <div className="left__logo">
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/2/24/ZingMP3logo.svg"
           alt=""
         />
+      </div>
+      <div className="left__mobile-right">
+        <SearchIcon />
+        <Avatar className="left__mobile-avt">H</Avatar>
       </div>
       <div className="left__menu">
         <NavLink to="/search" className="menu__item">

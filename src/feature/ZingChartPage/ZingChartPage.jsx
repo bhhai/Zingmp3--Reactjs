@@ -16,17 +16,28 @@ function ZingChartPage(props) {
   const playingPlaylist = useSelector((state) => state.music.playingPlaylist);
 
   const [playList, setPlayList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
-      const response = await musicApi.getCharthome();
+      try {
+        const response = await musicApi.getCharthome();
 
-      setPlayList(response.data.RTChart.items);
+        setPlayList(response.data.RTChart.items);
 
-      dispatch(setPlayingPlaylist(response.data.RTChart.items));
+        dispatch(setPlayingPlaylist(response.data.RTChart.items));
+
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     getData();
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -39,7 +50,7 @@ function ZingChartPage(props) {
         <LineChart />
       </div>
 
-      <ChartPlayList data={playList} />
+      <ChartPlayList data={playList} loading={loading} />
     </div>
   );
 }

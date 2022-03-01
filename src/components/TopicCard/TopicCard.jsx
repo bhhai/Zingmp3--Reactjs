@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import "./TopicCard.css";
 import { Link } from "react-router-dom";
 

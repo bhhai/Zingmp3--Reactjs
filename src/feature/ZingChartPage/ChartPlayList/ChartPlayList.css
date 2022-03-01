@@ -14,6 +14,7 @@
   padding: 10px 0 5px 0;
   border-bottom: 1px solid hsla(0,0%,100%,0.05);
   border-radius: 5px;
+  min-height: 65px;
 }
 
 .chart-playlist__item:hover {
@@ -48,7 +49,7 @@
 .playlist__item-title .playlist__name {
   margin-left: 10px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .playlist__album {
@@ -155,4 +156,10 @@
   font-size: 12px !important;
   font-weight: 500 !important;
   padding-right: 20px;
+}
+
+/* Skeleton */
+
+.css-1dk1h2u-MuiSkeleton-root {
+  background-color: rgba(255, 255, 255, .15) !important;
 }

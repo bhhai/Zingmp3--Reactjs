@@ -28,7 +28,6 @@ export function LineChart({ props }) {
   const [counter2, setCounter2] = useState([]);
   const [counter3, setCounter3] = useState([]);
   const [song, setSong] = useState([]);
-  const [chart, setChart] = useState({});
 
   useEffect(() => {
     const getChart = async () => {
@@ -40,11 +39,11 @@ export function LineChart({ props }) {
             if (parseInt(item.hour) % 2 === 0) {
               arr.push(item.hour + ":00");
             }
+            return arr;
           });
           return arr;
         });
         setSong(zingChart.data.RTChart.items.slice(0, 3));
-        setChart(zingChart.data.RTChart.chart.items);
 
         setCounter1(() => {
           let c1 = [];
@@ -53,6 +52,7 @@ export function LineChart({ props }) {
             if (parseInt(item.hour) % 2 === 0) {
               c1.push(item.counter);
             }
+            return c1;
           });
           return c1;
         });
@@ -63,6 +63,7 @@ export function LineChart({ props }) {
             if (parseInt(item.hour) % 2 === 0) {
               c2.push(item.counter);
             }
+            return c2;
           });
           return c2;
         });
@@ -73,6 +74,7 @@ export function LineChart({ props }) {
             if (parseInt(item.hour) % 2 === 0) {
               c3.push(item.counter);
             }
+            return c3;
           });
           return c3;
         });

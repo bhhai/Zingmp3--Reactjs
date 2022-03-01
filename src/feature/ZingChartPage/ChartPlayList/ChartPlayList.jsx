@@ -1,16 +1,16 @@
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import RemoveIcon from "@mui/icons-material/Remove";
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setPlayingSong } from "../musicSlice";
 import "./ChartPlayList.css";
+import SongSkeleton from "./SongSkeleton";
 
 ChartPlayList.propTypes = {};
 
-function ChartPlayList({ data }) {
+function ChartPlayList({ data, loading }) {
   const playingSong = useSelector((state) => state.music.playingSong);
-  const [songId, setSongId] = useState();
 
   const dispatch = useDispatch();
 
@@ -22,19 +22,11 @@ function ChartPlayList({ data }) {
     }`;
   }
 
-  // function findElement(e) {
-  //   const element = e.target;
-  //   const key = element
-  //     .closest(".chart-playlist__item")
-  //     .getAttribute("data-key");
-
-  //   setSongId(key);
-  //   dispatch(setPlayingSong(key));
-  //   return key;
-  // }
   return (
     <div className="chart-page__playlist">
-      {data &&
+      {loading ? (
+        <SongSkeleton length={10} />
+      ) : (
         data.map((item, i) => (
           <div
             key={i}
@@ -82,7 +74,8 @@ function ChartPlayList({ data }) {
               {formatDuration(item.duration)}
             </div>
           </div>
-        ))}
+        ))
+      )}
     </div>
   );
 }

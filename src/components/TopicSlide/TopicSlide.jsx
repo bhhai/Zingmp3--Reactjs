@@ -20,9 +20,22 @@ function TopicSlide({ data }) {
     <div>
       <Swiper
         spaceBetween={25}
-        slidesPerView={5}
         autoplay={{
           delay: 5000,
+        }}
+        breakpoints={{
+          // when window width is >= 640px
+          0: { slidesPerView: 2 },
+          640: {
+            slidesPerView: 2,
+          },
+          // when window width is >= 768px
+          768: {
+            slidesPerView: 4,
+          },
+          1024: {
+            slidesPerView: 5,
+          },
         }}
       >
         {data &&
@@ -51,9 +64,22 @@ export const ZingChoiceSlide = ({ data }) => {
     <div className="zing-choice">
       <Swiper
         spaceBetween={25}
-        slidesPerView={5}
         autoplay={{
           delay: 5000,
+        }}
+        breakpoints={{
+          // when window width is >= 640px
+          0: { slidesPerView: 2 },
+          640: {
+            slidesPerView: 2,
+          },
+          // when window width is >= 768px
+          768: {
+            slidesPerView: 4,
+          },
+          1024: {
+            slidesPerView: 5,
+          },
         }}
       >
         {data.map((item, i) => (

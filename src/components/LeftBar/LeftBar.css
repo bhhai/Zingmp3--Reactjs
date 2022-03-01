@@ -5,9 +5,19 @@
   position: fixed;
   left: 0;
   top: 0;
-  bottom: 0;
+  /* bottom: 0; */
   border: 1px solid #010101;
   width: inherit;
+}
+
+.left__mobile-icon {
+  display: none;
+  
+}
+
+.left__mobile-right {
+  visibility: hidden;
+  width: 0;
 }
 
 .left__logo {
@@ -46,4 +56,52 @@
   margin-left: 5px;
   font-weight: 600;
   font-size: 15px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .left {
+    position: fixed;
+    top: 0;
+    right: 0;
+    /* bottom: unset; */
+    height: 80px;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+  }
+
+  .left__menu {
+    display: none;
+  }
+
+  .left__mobile-icon {
+    display: block;
+    width: 33.33%;
+  }
+
+  .left__logo {
+    width: 33.33%;
+  }
+
+  .left__logo > img {
+    margin: 0;
+    width: 100%;
+  }
+
+  .left__mobile-right {
+    display: flex;
+    align-items: center;
+    visibility: visible;
+    width: 33.33%;
+    justify-content: flex-end;
+  }
+
+  .left__mobile-avt {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+  }
 }

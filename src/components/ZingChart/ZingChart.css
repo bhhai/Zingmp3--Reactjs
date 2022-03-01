@@ -5,6 +5,7 @@
   background-image: url("https://zjs.zadn.vn/zmp3-desktop/releases/v1.5.13/static/media/bg-chart.fd766403.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  border-radius: 20px;
   
 }
 
@@ -22,6 +23,7 @@
   right: 0;
   background-image: linear-gradient(180deg,#740091,#2d1a4c);
   opacity: .9;
+  border-radius: 20px;
 }
 
 .chart__song {
@@ -37,4 +39,20 @@
 .btn {
   display: flex;
   justify-content: center;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .zing-chart__container {
+    flex-direction: column-reverse;
+  }
+
+  .chart__song {
+    width: 100%;
+  }
+  
+  .chart__chart {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }

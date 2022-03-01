@@ -7,6 +7,7 @@ import RepeatIcon from "@mui/icons-material/Repeat";
 import ShuffleIcon from "@mui/icons-material/Shuffle";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
+import RepeatOneIcon from "@mui/icons-material/RepeatOne";
 import VolumeUp from "@mui/icons-material/VolumeUp";
 import PauseIcon from "@mui/icons-material/Pause";
 import { Slider } from "@mui/material";
@@ -104,10 +105,10 @@ function Player({ id }) {
       };
       // Khi endSong
       audio.current.onended = () => {
-        setIsPlaying(false);
         if (this.isRepeat) {
           audio.current.play();
         } else {
+          setIsPlaying(false);
           if (isRandom) {
             this.randomSong();
           } else {
@@ -115,30 +116,13 @@ function Player({ id }) {
           }
         }
       };
-      // Khi thay doi volume
-      volumeProgress.current.oninput = (e) => {
-        const seekVolume = e.target.value / 100;
-        setValueVolume(seekVolume * 100);
-        audio.current.volume = seekVolume;
-      };
-      // Khi isRepeat
-      if (this.isRepeat) {
-        repeatBtn.current.childNodes[0].classList.add("main-color");
-      } else {
-        repeatBtn.current.childNodes[0].classList.remove("main-color");
-      }
-      // Khi isRandom
-      if (this.isRandom) {
-        randomBtn.current.childNodes[0].classList.add("main-color");
-      } else {
-        randomBtn.current.childNodes[0].classList.remove("main-color");
-      }
     },
     randomSong() {
       let newIndex;
       do {
         newIndex = Math.floor(Math.random() * playingPlaylist.length);
-      } while (playingPlaylist[newIndex].encodeId === playingSong.encodeId);
+      } while (playingPlaylist[newIndex].encodeId === playingSong);
+      console.log(playingPlaylist[newIndex].encodeId);
       dispatch(setPlayingSong(playingPlaylist[newIndex].encodeId));
     },
     start() {
@@ -156,8 +140,10 @@ function Player({ id }) {
     handle,
   ]);
 
-  const handleChange = (event, newValue) => {
-    setValueVolume(newValue);
+  const handleVolumeChange = (event, newValue) => {
+    const seekVolume = newValue / 100;
+    setValueVolume(seekVolume * 100);
+    audio.current.volume = seekVolume;
   };
 
   function formatDuration(value) {
@@ -167,6 +153,16 @@ function Player({ id }) {
       secondLeft <= 9 ? `0${secondLeft}` : secondLeft
     }`;
   }
+
+  const handleNextSong = () => {
+    setIsPlaying(false);
+    return dispatch(setNextSong());
+  };
+
+  const handlePrevSong = () => {
+    setIsPlaying(false);
+    return dispatch(setPrevSong());
+  };
 
   return (
     <>
@@ -212,10 +208,7 @@ function Player({ id }) {
               >
                 <ShuffleIcon />
               </div>
-              <div
-                className="center__control-item"
-                onClick={() => dispatch(setPrevSong())}
-              >
+              <div className="center__control-item" onClick={handlePrevSong}>
                 <SkipPreviousIcon />
               </div>
               <div
@@ -225,10 +218,7 @@ function Player({ id }) {
               >
                 {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
               </div>
-              <div
-                className="center__control-item"
-                onClick={() => dispatch(setNextSong())}
-              >
+              <div className="center__control-item" onClick={handleNextSong}>
                 <SkipNextIcon />
               </div>
               <div
@@ -238,7 +228,7 @@ function Player({ id }) {
                 ref={repeatBtn}
                 onClick={() => setIsRepeat(!isRepeat)}
               >
-                <RepeatIcon />
+                {isRepeat ? <RepeatOneIcon /> : <RepeatIcon />}
               </div>
             </div>
             <div className="center__slider">
@@ -281,7 +271,7 @@ function Player({ id }) {
             <Slider
               aria-label="Volume"
               value={valueVolume}
-              onChange={handleChange}
+              onChange={handleVolumeChange}
               ref={volumeProgress}
             />
           </div>

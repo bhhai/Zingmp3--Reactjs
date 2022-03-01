@@ -101,7 +101,7 @@ function Home(props) {
       ) : (
         <div className="home-container">
           <div className="home__slide">
-            <HeroSlider slider={heroSlider} />
+            <HeroSlider slider={heroSlider} loading={loading} />
           </div>
           <div className="home__new-release">
             <h2 className="home__new-title">{homePlaylist.items[3].title}</h2>

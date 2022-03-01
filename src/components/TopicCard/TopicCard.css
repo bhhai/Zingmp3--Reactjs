@@ -21,7 +21,6 @@
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  height: 220px;
 }
 
 
@@ -32,7 +31,6 @@
 
 .topic__image {
   width: 100%;
-  height: 220px;
   object-fit: cover;
   border-radius: 10px;
   transition: all .3s ease-in-out;
@@ -40,8 +38,9 @@
 
 .topic__title {
   color: #fff;
-  font-size: 16px;
+  font-size: 14px;
   margin: 8px 0;
+  font-weight: 700;
 }
 
 .topic__icon {
@@ -67,6 +66,8 @@
 .topic__icon > :first-child, .topic__icon > :last-child {
   border-radius: 50%;
   padding: 5px;
+  width: 30px;
+  height: 30px;
   transition: all .3s ease-in-out;
 }
 
@@ -98,5 +99,5 @@
   color: hsla(0,0%,100%,0.5);
   font-size: 14px;
   line-height: 14px;
-  font-weight: 600;
+  font-weight: 400;
 }
