@@ -25,7 +25,7 @@ import axios from "axios";
 
 Player.propTypes = {};
 
-function Player({ id }) {
+function Player(props) {
   const dispatch = useDispatch();
 
   const playingSong = useSelector((state) => state.music.playingSong);
@@ -57,7 +57,6 @@ function Player({ id }) {
     const getSong = async () => {
       try {
         const response = await musicApi.getSong(playingSong);
-        const getInfo = await musicApi.getInfoSong(playingSong);
 
         if (response.data === undefined) {
           const result = await axios(response.url);
@@ -66,13 +65,21 @@ function Player({ id }) {
           setSong(response.data);
         }
 
-        setInfoSong(getInfo.data);
-
         if (playingSong) setIsPlaying(true);
         setLoading(false);
       } catch (error) {}
     };
     getSong();
+  }, [playingSong]);
+
+  useEffect(() => {
+    const getSongInfo = async () => {
+      const getInfo = await musicApi.getInfoSong(playingSong);
+
+      setInfoSong(getInfo.data);
+    };
+
+    getSongInfo();
   }, [playingSong]);
 
   useEffect(() => {
