@@ -42,7 +42,11 @@ function Playlist(props) {
     <div className="playlist">
       <div className="playlist-container">
         <PlaylistBanner playlist={playlist && playlist} />
-        <PlaylistSong data={playlistSong} playlist={playlist} />
+        <PlaylistSong
+          data={playlistSong}
+          playlist={playlist}
+          loading={loading}
+        />
       </div>
     </div>
   );

@@ -85,8 +85,11 @@ function ChartPlayList({ data, loading, icon }) {
                 </div>
               </div>
             </div>
-            <Link to={item.album.link} className="playlist__album">
-              {item.album.title}
+            <Link
+              to={item.album ? item.album.link : ""}
+              className="playlist__album"
+            >
+              {item.album ? item.album.title : ""}
             </Link>
             <div className="playlist__duration">
               {formatDuration(item.duration)}

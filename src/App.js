@@ -22,6 +22,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/song/:songID" element={<SongDetail />} />
             <Route path="/playlist/:title/:id" element={<Playlist />} />
+            <Route path="/album/:title/:id" element={<Playlist />} />
             <Route path="/zing-chart" element={<ZingChartPage />} />
           </Routes>
           <Footer />
