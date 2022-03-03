@@ -28,7 +28,7 @@ function ChartPlayList({ data, loading, icon }) {
     if (songStatus === 1) {
       return dispatch(setPlayingSong(id));
     } else {
-      console.log("Day la bai VIP");
+      alert("Đây là bài VIP. Nạp tiền vào mà nghe :)");
     }
   };
 
