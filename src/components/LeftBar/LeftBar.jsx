@@ -19,12 +19,12 @@ function LeftBar(props) {
       <div className="left__mobile-icon">
         <SortIcon />
       </div>
-      <div className="left__logo">
+      <Link to="/" className="left__logo">
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/2/24/ZingMP3logo.svg"
           alt=""
         />
-      </div>
+      </Link>
       <div className="left__mobile-right">
         <SearchIcon />
         <Avatar className="left__mobile-avt">H</Avatar>

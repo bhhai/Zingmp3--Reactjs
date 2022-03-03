@@ -1,5 +1,3 @@
-import NhacCuaTui from "nhaccuatui-api-full";
-import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
@@ -7,7 +5,7 @@ import Header from "./components/Header/Header";
 import LeftBar from "./components/LeftBar/LeftBar";
 import Player from "./components/Player/Player";
 import Home from "./feature/Home/Home";
-import PlaylistDetail from "./feature/PlaylistDetail/PlaylistDetail";
+import Playlist from "./feature/Playlist/Playlist";
 import SongDetail from "./feature/SongDetail/SongDetail";
 import ZingChartPage from "./feature/ZingChartPage/ZingChartPage";
 function App() {
@@ -23,7 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/song/:songID" element={<SongDetail />} />
-            <Route path="/playlist/:playlistID" element={<PlaylistDetail />} />
+            <Route path="/playlist/:title/:id" element={<Playlist />} />
             <Route path="/zing-chart" element={<ZingChartPage />} />
           </Routes>
           <Footer />

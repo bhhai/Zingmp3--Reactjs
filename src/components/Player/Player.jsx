@@ -21,6 +21,7 @@ import {
   setPrevSong,
 } from "../../feature/ZingChartPage/musicSlice";
 import "./Player.css";
+import axios from "axios";
 
 Player.propTypes = {};
 
@@ -58,9 +59,13 @@ function Player({ id }) {
         const response = await musicApi.getSong(playingSong);
         const getInfo = await musicApi.getInfoSong(playingSong);
 
-        console.log(getInfo);
+        if (response.data === undefined) {
+          const result = await axios(response.url);
+          setSong(result.data.data);
+        } else {
+          setSong(response.data);
+        }
 
-        setSong(response.data);
         setInfoSong(getInfo.data);
 
         if (playingSong) setIsPlaying(true);
@@ -122,7 +127,6 @@ function Player({ id }) {
       do {
         newIndex = Math.floor(Math.random() * playingPlaylist.length);
       } while (playingPlaylist[newIndex].encodeId === playingSong);
-      console.log(playingPlaylist[newIndex].encodeId);
       dispatch(setPlayingSong(playingPlaylist[newIndex].encodeId));
     },
     start() {

@@ -18,6 +18,7 @@
 .left__mobile-right {
   visibility: hidden;
   width: 0;
+  height: 0;
 }
 
 .left__logo {
@@ -30,6 +31,8 @@
   height: 40px;
   margin-left: 20px;
   cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .left_menu {

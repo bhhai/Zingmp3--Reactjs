@@ -12,7 +12,6 @@ import "./NewReleaseSlide.css";
 NewReleaseSlide.propTypes = {};
 
 function NewReleaseSlide({ data }) {
-  console.log(data);
   return (
     <Swiper
       spaceBetween={25}

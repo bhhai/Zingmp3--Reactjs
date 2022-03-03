@@ -4,12 +4,14 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setPlayingSong } from "../musicSlice";
+import AudiotrackIcon from "@mui/icons-material/Audiotrack";
+import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import "./ChartPlayList.css";
 import SongSkeleton from "./SongSkeleton";
 
 ChartPlayList.propTypes = {};
 
-function ChartPlayList({ data, loading }) {
+function ChartPlayList({ data, loading, icon }) {
   const playingSong = useSelector((state) => state.music.playingSong);
 
   const dispatch = useDispatch();
@@ -22,6 +24,14 @@ function ChartPlayList({ data, loading }) {
     }`;
   }
 
+  const handleSongClick = (id, songStatus) => {
+    if (songStatus === 1) {
+      return dispatch(setPlayingSong(id));
+    } else {
+      console.log("Day la bai VIP");
+    }
+  };
+
   return (
     <div className="chart-page__playlist">
       {loading ? (
@@ -32,12 +42,20 @@ function ChartPlayList({ data, loading }) {
             key={i}
             className={`chart-playlist__item ${
               playingSong === item.encodeId ? "playing-active" : ""
-            }`}
+            } ${item.streamingStatus !== 1 ? " VIP" : ""}`}
             data-key={item.encodeId}
-            onClick={() => dispatch(setPlayingSong(item?.encodeId))}
+            onClick={(id, songStatus) =>
+              handleSongClick(item.encodeId, item.streamingStatus)
+            }
           >
             <div className="playlist__item-position">
-              <span>{i + 1}</span>
+              {icon ? (
+                <LibraryMusicIcon
+                  style={{ color: "#837f8a", marginLeft: "10px" }}
+                />
+              ) : (
+                <span>{i + 1}</span>
+              )}
             </div>
             <div className="playlist__item-title">
               <div className="playlist__thumbnail">
