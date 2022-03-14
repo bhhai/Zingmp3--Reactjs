@@ -18,10 +18,14 @@ function HomeEventSlide(props) {
     getData();
   }, []);
   return (
-    <div className="home__new-release">
-      <h2 className="home__new-title">Sự Kiện</h2>
-      {/* <HomeEvent data={listEvent} /> */}
-    </div>
+    <>
+      {/* {listEvent !== undefined && (
+        <div className="home__new-release">
+          <h2 className="home__new-title">Sự Kiện</h2>
+          <HomeEvent data={listEvent} />
+        </div>
+      )} */}
+    </>
   );
 }
 

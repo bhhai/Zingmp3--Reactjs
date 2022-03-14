@@ -3,10 +3,15 @@
   background-color: #2f2739;
   border-radius: 10px;
   display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.new__box-img {
+  width: 30%;
 }
 
 .new__img {
-  width: 120px;
   border-radius: 10px;
   margin: 15px;
 }
@@ -32,9 +37,8 @@
 }
 
 .new__content {
-  position: relative;
-  width: 100%;
-  margin-right: 15px;
+  width: 66%;
+  padding-right: 10px;
 }
 
 .bottom {
@@ -46,23 +50,9 @@
   justify-content: space-between;
 }
 
-.position {
-  opacity: .4;
-  -webkit-text-stroke: 1px #fff;
-  font-size: 40px;
-  font-weight: 900;
-  color: transparent;
-  line-height: 1;
-  font-family: "Roboto",sans-serif;
-}
-
-.duration {
-  color: #756f7c;
-}
 
 @media only screen and (max-width: 1024px) {
   .new__content {
-    width: fit-content;
     margin: 0;
   }
 

@@ -1,17 +1,22 @@
-import React from "react";
-import PropTypes from "prop-types";
-import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import React from "react";
 import LazyLoad from "react-lazyload";
-import Loading from "../Loading/Loading";
-import "./TopicCard.css";
 import { Link } from "react-router-dom";
+import "./TopicCard.css";
 
 TopicCard.propTypes = {};
 
-function TopicCard({ src, title, playlistKey, description, link, release }) {
+function TopicCard({
+  src,
+  title,
+  playlistKey,
+  description,
+  link,
+  release,
+  loading,
+}) {
   return (
     <Link to={link} className="topic">
       <div className="topic__thumbnail">
@@ -37,6 +42,7 @@ function TopicCard({ src, title, playlistKey, description, link, release }) {
         </div>
         <div className="overlay"></div>
       </div>
+
       <h3 className="topic__title">{title}</h3>
       <span className="topic__description">
         {description.length > 100

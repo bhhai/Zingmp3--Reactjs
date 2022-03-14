@@ -70,7 +70,8 @@
   opacity: 1;
 }
 
-.song__thumbnail > img {
+.song__thumbnail-img {
+  min-height: 60px;
   width: 60px;
   border-radius: 6px;
 }

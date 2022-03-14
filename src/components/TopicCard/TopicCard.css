@@ -31,7 +31,7 @@
 
 .topic__image {
   width: 100%;
-  min-height: 150px;
+  min-height: 200px;
   object-fit: cover;
   border-radius: 10px;
   transition: all .3s ease-in-out;

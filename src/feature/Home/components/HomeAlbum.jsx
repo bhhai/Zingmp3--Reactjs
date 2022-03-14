@@ -10,6 +10,7 @@ HomeAlbum.propTypes = {};
 function HomeAlbum(props) {
   const [album, setAlbum] = useState([]);
   const [zingchoice, setZingchoice] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
@@ -17,13 +18,15 @@ function HomeAlbum(props) {
 
       setZingchoice(res.data.items[1].items);
       setAlbum(res.data.items[0].items);
+
+      setLoading(false);
     };
 
     getData();
   }, []);
   return (
     <>
-      <TopicSlide data={album} />
+      <TopicSlide data={album} loading={loading} />
 
       <div className="home__new-release">
         <h2 className="home__new-title">Nghệ Sĩ Zing Choice</h2>

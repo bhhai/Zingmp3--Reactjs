@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
-import NhacCuaTui from "nhaccuatui-api-full";
-
+import { Skeleton } from "@mui/material";
+import React from "react";
+import TopicCard from "../TopicCard/TopicCard";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-
+import { Swiper, SwiperSlide } from "swiper/react";
 import "./TopicSlide.css";
-import TopicCard from "../TopicCard/TopicCard";
-import LazyLoad from "react-lazyload";
-import Loading from "../Loading/Loading";
 
 TopicSlide.propTypes = {};
 
-function TopicSlide({ data }) {
+function TopicSlide({ data, loading }) {
   return (
     <div>
       <Swiper
@@ -40,22 +34,48 @@ function TopicSlide({ data }) {
           },
         }}
       >
-        {data &&
-          data.map((item, index) => (
-            <SwiperSlide key={index}>
-              <TopicCard
-                src={item.thumbnailM || item.thumbnail || item.thumbURL}
-                title={item.title}
-                playlistKey={item.encodeId}
-                description={
-                  item.sortDescription ||
-                  item.releaseDate ||
-                  item.activeUsers + " đang nghe"
-                }
-                link={item.link}
-              />
-            </SwiperSlide>
-          ))}
+        {loading
+          ? Array.from(new Array(8)).map((x, i) => (
+              <SwiperSlide key={i}>
+                <div key={i} className="topic">
+                  <div className="topic__thumbnail">
+                    <Skeleton
+                      variant="rectangular"
+                      height="215px"
+                      width="100%"
+                    />
+                  </div>
+                  <div className="topic__title" style={{ margin: "10px 0" }}>
+                    <Skeleton animation="wave" height="20px" width="50%" />
+                  </div>
+                  <span className="topic__description">
+                    <Skeleton animation="wave" height="14px" width="100%" />
+                    <Skeleton
+                      animation="wave"
+                      height="14px"
+                      width={`${Math.random() * 100}%`}
+                    />
+                  </span>
+                </div>
+              </SwiperSlide>
+            ))
+          : data &&
+            data.map((item, index) => (
+              <SwiperSlide key={index}>
+                <TopicCard
+                  src={item.thumbnailM || item.thumbnail || item.thumbURL}
+                  title={item.title}
+                  playlistKey={item.encodeId}
+                  description={
+                    item.sortDescription ||
+                    item.releaseDate ||
+                    item.activeUsers + " đang nghe"
+                  }
+                  link={item.link}
+                  loading={loading}
+                />
+              </SwiperSlide>
+            ))}
       </Swiper>
     </div>
   );

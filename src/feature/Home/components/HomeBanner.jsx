@@ -37,12 +37,12 @@ function HomeBanner(props) {
       </div>
       <div className="home__new-release">
         <h2 className="home__new-title">{playlist1.title}</h2>
-        <TopicSlide data={playlist1.items} />
+        <TopicSlide loading={loading} data={playlist1.items} />
       </div>
 
       <div className="home__new-release">
         <h2 className="home__new-title">{playlist2.title}</h2>
-        <TopicSlide data={playlist2.items} />
+        <TopicSlide loading={loading} data={playlist2.items} />
       </div>
     </>
   );

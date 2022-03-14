@@ -67,7 +67,9 @@ function Player(props) {
 
         if (playingSong) setIsPlaying(true);
         setLoading(false);
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     };
     getSong();
   }, [playingSong]);

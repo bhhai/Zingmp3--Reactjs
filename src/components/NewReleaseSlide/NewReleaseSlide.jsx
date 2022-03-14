@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -57,32 +57,31 @@ function NewReleaseSlide({ data }) {
 
 const NewCard = ({ src, title, artist, position, ranking, link }) => {
   return (
-    <Link to={link} className="new-card">
+    <div className="new-card">
       <div className="new__box-img">
         <img className="new__img" src={src} alt={title} />
       </div>
       <div className="new__content">
-        <h4 className="new__content-title">{title}</h4>
+        <Link to={link}>
+          <h4 className="new__content-title">{title}</h4>
+        </Link>
         {artist.length > 1
-          ? artist.map((item, i) => {
-              let len = artist.length;
-              return (
-                <Link to={item.link} key={item.artistId} className="artist">
-                  {len - 1 === i ? item.name + "" : item.name + ",  "}
-                </Link>
-              );
-            })
+          ? artist.map((item, i) => (
+              <Link to={item.link} key={item.artistId} className="artist">
+                {artist.length - 1 === i ? item.name + "" : item.name + ",  "}
+              </Link>
+            ))
           : artist.map((item, i) => (
               <Link to={item.link} key={item.artistId} className="artist">
                 {item.name}
               </Link>
             ))}
-        <div className="bottom">
+        {/* <div className="bottom">
           <span className="position">#{position || ranking}</span>
           <p className="duration">Mới phát hành</p>
-        </div>
+        </div> */}
       </div>
-    </Link>
+    </div>
   );
 };
 

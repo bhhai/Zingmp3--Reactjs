@@ -12,6 +12,7 @@ import HomeNewRelease from "./components/HomeNewRelease";
 import HomePlaylist2 from "./components/HomePlaylist2";
 import "../../components/ZingChart/WeekChart/WeekChart.css";
 import "./Home.css";
+import { Skeleton } from "@mui/material";
 
 Home.propTypes = {};
 
@@ -40,6 +41,8 @@ function Home(props) {
       try {
         const response = await musicApi.getTop100();
         setTop100(response.data[0].items);
+
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -55,7 +58,9 @@ function Home(props) {
 
         <HomePlaylist2 />
 
-        <LazyLoad placeholder={<Loading />}>
+        <LazyLoad
+          placeholder={<Skeleton animation="wave" height={500} width="100%" />}
+        >
           <ZingChart data={zingChart} />
         </LazyLoad>
 
@@ -77,7 +82,7 @@ function Home(props) {
 
         <div className="home__new-release">
           <h2 className="home__new-title">Top 100</h2>
-          <TopicSlide data={top100} />
+          <TopicSlide loading={loading} data={top100} />
         </div>
 
         <HomeNewRelease />
