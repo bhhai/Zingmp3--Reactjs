@@ -38,41 +38,42 @@ function HomeEvent({ data }) {
       }}
       className="home-event"
     >
-      {data.items.map((item, i) => (
-        <SwiperSlide className="home-event__item" key={item.encodeId}>
-          <div className="home-event__thumbnail">
-            <div className="thumbnail-overlay"></div>
-            <img src={item.coverH} alt={item.title} />
-            <div className="home-event__title">
-              <span className="home-event__tags">{item.label}</span>
-              <h4 className="home-event__tit">{item.title}</h4>
-              <span className="home-event__address">{item.address}</span>
-            </div>
-          </div>
-          <div className="home-event__follow">
-            <div className="followers">
-              <span>Lượt quan tâm</span>
-              <div className="followers__avt">
-                {item.followers.map((follower, i) => (
-                  <img
-                    key={follower.id}
-                    src={follower.avatar}
-                    alt=""
-                    className="follower__image"
-                  />
-                ))}
-                <span>
-                  <span>+</span>
-                  {item.totalFollow - item.followers.length}
-                </span>
+      {data &&
+        data.items.map((item, i) => (
+          <SwiperSlide className="home-event__item" key={item.encodeId}>
+            <div className="home-event__thumbnail">
+              <div className="thumbnail-overlay"></div>
+              <img src={item.coverH} alt={item.title} />
+              <div className="home-event__title">
+                <span className="home-event__tags">{item.label}</span>
+                <h4 className="home-event__tit">{item.title}</h4>
+                <span className="home-event__address">{item.address}</span>
               </div>
             </div>
-            <div className="follow__btn">
-              <MainButton title={item.subscribeText} />
+            <div className="home-event__follow">
+              <div className="followers">
+                <span>Lượt quan tâm</span>
+                <div className="followers__avt">
+                  {item.followers.map((follower, i) => (
+                    <img
+                      key={follower.id}
+                      src={follower.avatar}
+                      alt=""
+                      className="follower__image"
+                    />
+                  ))}
+                  <span>
+                    <span>+</span>
+                    {item.totalFollow - item.followers.length}
+                  </span>
+                </div>
+              </div>
+              <div className="follow__btn">
+                <MainButton title={item.subscribeText} />
+              </div>
             </div>
-          </div>
-        </SwiperSlide>
-      ))}
+          </SwiperSlide>
+        ))}
     </Swiper>
   );
 }

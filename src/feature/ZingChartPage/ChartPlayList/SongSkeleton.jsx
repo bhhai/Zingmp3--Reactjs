@@ -9,7 +9,7 @@ function SongSkeleton({ length }) {
   return (
     <>
       {Array.from(new Array(length)).map((x, index) => (
-        <div className="chart-playlist__item">
+        <div key={index} className="chart-playlist__item">
           <div className="playlist__item-position">
             <Skeleton animation="wave" height={50} width="100%" />
           </div>

@@ -7,15 +7,16 @@ WeekChart.propTypes = {};
 function WeekChart({ data }) {
   return (
     <div className="week-chart">
-      {data.map((item, i) => (
-        <Link
-          to={item.link}
-          key={item.playlistId}
-          className="week-chart__banner"
-        >
-          <img src={item.cover} alt="" />
-        </Link>
-      ))}
+      {data.length > 0 &&
+        data.map((item, i) => (
+          <Link
+            to={item.link}
+            key={item.playlistId}
+            className="week-chart__banner"
+          >
+            <img src={item.cover} alt="" />
+          </Link>
+        ))}
     </div>
   );
 }

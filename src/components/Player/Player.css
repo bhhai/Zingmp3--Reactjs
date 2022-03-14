@@ -42,7 +42,9 @@
 }
 
 .artist {
-  font-size: 10px !important;
+  font-size: 12px !important;
+  color: #89868e !important;
+  font-weight: 600 !important;
 }
 
 

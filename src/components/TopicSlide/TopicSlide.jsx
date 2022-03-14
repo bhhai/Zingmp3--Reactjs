@@ -12,6 +12,8 @@ import "swiper/css/scrollbar";
 
 import "./TopicSlide.css";
 import TopicCard from "../TopicCard/TopicCard";
+import LazyLoad from "react-lazyload";
+import Loading from "../Loading/Loading";
 
 TopicSlide.propTypes = {};
 

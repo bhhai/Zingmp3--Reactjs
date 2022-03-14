@@ -12,6 +12,7 @@ import "swiper/css/scrollbar";
 
 import "./HeroSlider.css";
 import LoadingHeroSlide from "./LoadingHeroSlide/LoadingHeroSlide";
+import { Link } from "react-router-dom";
 
 HeroSlider.propTypes = {};
 
@@ -48,16 +49,18 @@ function HeroSlider({ slider, loading }) {
       ) : (
         slider.map((item, index) => (
           <SwiperSlide key={index}>
-            <img
-              src={item.banner}
-              alt={item.title}
-              style={{
-                width: "100%",
-                height: "220px",
-                objectFit: "cover",
-                borderRadius: "20px",
-              }}
-            />
+            <Link to={item.link}>
+              <img
+                src={item.banner}
+                alt={item.title}
+                style={{
+                  width: "100%",
+                  height: "220px",
+                  objectFit: "cover",
+                  borderRadius: "20px",
+                }}
+              />
+            </Link>
           </SwiperSlide>
         ))
       )}

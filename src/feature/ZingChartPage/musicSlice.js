@@ -5,13 +5,9 @@ const musicSlice = createSlice({
   initialState: {
     playingPlaylist: [],
     playingSong: "",
-    songIndex: 0,
   },
   reducers: {
     setPlayingSong(state, action) {
-      const songIndex = state.playingPlaylist.findIndex(
-        (song) => song.encodeId === action.payload
-      );
       return { ...state, playingSong: action.payload };
     },
     setPlayingPlaylist(state, action) {
