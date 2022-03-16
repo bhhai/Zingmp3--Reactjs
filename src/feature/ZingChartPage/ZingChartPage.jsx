@@ -6,7 +6,7 @@ import "./ZingChartPage.css";
 import musicApi from "../../api/musicApi";
 import ChartPlayList from "./ChartPlayList/ChartPlayList";
 import { useDispatch, useSelector } from "react-redux";
-import { setPlayingPlaylist, setPlayingSong } from "./musicSlice";
+import { setPlayingPlaylist, setPlayingSong, setUrlList } from "./musicSlice";
 
 ZingChartPage.propTypes = {};
 
@@ -50,7 +50,9 @@ function ZingChartPage(props) {
         <LineChart />
       </div>
 
-      <ChartPlayList data={playList} loading={loading} />
+      <div style={{ width: "90%", margin: "auto" }}>
+        <ChartPlayList data={playList} loading={loading} />
+      </div>
     </div>
   );
 }

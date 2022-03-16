@@ -5,6 +5,7 @@ const musicSlice = createSlice({
   initialState: {
     playingPlaylist: [],
     playingSong: "",
+    urlList: [],
   },
   reducers: {
     setPlayingSong(state, action) {
@@ -12,6 +13,9 @@ const musicSlice = createSlice({
     },
     setPlayingPlaylist(state, action) {
       state.playingPlaylist = action.payload;
+    },
+    setUrlList(state, action) {
+      return { ...state, urlList: action.payload };
     },
     setNextSong(state, action) {
       const playingPlaylist = state.playingPlaylist;
@@ -55,6 +59,11 @@ const musicSlice = createSlice({
 });
 
 const { actions, reducer } = musicSlice;
-export const { setPlayingSong, setPlayingPlaylist, setNextSong, setPrevSong } =
-  actions;
+export const {
+  setPlayingSong,
+  setPlayingPlaylist,
+  setNextSong,
+  setPrevSong,
+  setUrlList,
+} = actions;
 export default reducer;

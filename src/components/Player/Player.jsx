@@ -30,6 +30,7 @@ function Player(props) {
 
   const playingSong = useSelector((state) => state.music.playingSong);
   const playingPlaylist = useSelector((state) => state.music.playingPlaylist);
+  const urlList = useSelector((state) => state.music.urlList);
 
   const [song, setSong] = useState();
   const [infoSong, setInfoSong] = useState();
@@ -75,10 +76,12 @@ function Player(props) {
   }, [playingSong]);
 
   useEffect(() => {
-    const getSongInfo = async () => {
-      const getInfo = await musicApi.getInfoSong(playingSong);
+    const getSongInfo = () => {
+      const currentSongIndex = playingPlaylist.findIndex(
+        (song) => song.encodeId === playingSong
+      );
 
-      setInfoSong(getInfo.data);
+      setInfoSong(playingPlaylist[currentSongIndex]);
     };
 
     getSongInfo();

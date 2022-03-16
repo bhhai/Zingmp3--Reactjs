@@ -50,6 +50,10 @@ function Home(props) {
     getTop100();
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="home-page">
       <div className="home-container">
