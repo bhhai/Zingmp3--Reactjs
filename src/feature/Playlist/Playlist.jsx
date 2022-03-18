@@ -6,18 +6,22 @@ import PlaylistBanner from "./PlaylistBanner/PlaylistBanner";
 import PlaylistSong from "./PlaylistSong/PlaylistSong";
 import { useEffect } from "react";
 import musicApi from "../../api/musicApi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setPlayingPlaylist } from "../ZingChartPage/musicSlice";
+import PlaylistArtistSlide from "./PlaylistArtistSlide/PlaylistArtistSlide";
 
 Playlist.propTypes = {};
 
 function Playlist(props) {
   const { id } = useParams();
 
+  const isPlayingSong = useSelector((state) => state.music.isPlaying);
+
   const dispatch = useDispatch();
 
   const [playlist, setPlaylist] = useState({});
   const [playlistSong, setPlaylistSOng] = useState([]);
+  const [artists, setArtists] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -27,6 +31,7 @@ function Playlist(props) {
 
         setPlaylist(res.data);
         setPlaylistSOng(res.data.song.items);
+        setArtists(res.data?.artists);
 
         dispatch(setPlayingPlaylist(res.data.song.items));
         setLoading(false);
@@ -41,12 +46,21 @@ function Playlist(props) {
   return (
     <div className="playlist">
       <div className="playlist-container">
-        <PlaylistBanner playlist={playlist && playlist} />
+        <PlaylistBanner
+          playing={isPlayingSong}
+          playlist={playlist && playlist}
+          loading={loading}
+        />
         <PlaylistSong
           data={playlistSong}
           playlist={playlist}
           loading={loading}
         />
+      </div>
+
+      <div className="playlist__artist-slide">
+        <h2 className="playlist__artist-title">Nghệ sĩ tham gia</h2>
+        <PlaylistArtistSlide data={artists} />
       </div>
     </div>
   );

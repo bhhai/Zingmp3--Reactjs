@@ -117,18 +117,11 @@
   visibility: visible;
 }
 
-.playlist__thumbnail img {
+.chart__thumb-img {
   width: 100%;
   border-radius: 5px;
 }
 
-.playlist__thumbnail > :last-child {
-  position: absolute;
-  left: -35px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: hsla(0,0%,100%,0.5);
-}
 
 .playlist__artist .artist {
   color: hsla(0,0%,100%,0.5);

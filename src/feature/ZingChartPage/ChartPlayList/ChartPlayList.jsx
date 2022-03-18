@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setPlayingSong } from "../musicSlice";
 import AudiotrackIcon from "@mui/icons-material/Audiotrack";
+import LazyLoad from "react-lazyload";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import "./ChartPlayList.css";
 import SongSkeleton from "./SongSkeleton";
@@ -60,20 +61,34 @@ function ChartPlayList({ data, loading, icon }) {
             <div className="playlist__item-title">
               <div className="playlist__thumbnail">
                 <i className="playing-gif"></i>
-                <img src={item.thumbnail} alt={item.title} />
+                <LazyLoad
+                  placeholder={
+                    <img
+                      src="https://sherwin.scene7.com/is/image/sw/color-swatch?_tparam_size=250,250&layer=comp&_tparam_color=C2C0BB"
+                      className="chart__thumb-img"
+                      alt=""
+                    />
+                  }
+                >
+                  <img
+                    src={item.thumbnail}
+                    className="chart__thumb-img"
+                    alt={item.title}
+                  />
+                </LazyLoad>
                 <div className="thumb__overlay"></div>
                 <PlayArrowIcon className="thumb__icon" />
-                <RemoveIcon />
               </div>
               <div className="playlist__name">
-                <span>{item.title}</span>
+                <span>{item?.title}</span>
                 <div className="playlist__artist">
                   {item?.artists.length > 1
                     ? item.artists.map((art, i) => {
-                        let len = item.artists.length;
                         return (
                           <Link to={art.link} key={art.id} className="artist">
-                            {len - 1 === i ? art.name + "" : art.name + ",  "}
+                            {item?.artists.length - 1 === i
+                              ? art.name + ""
+                              : art.name + ",  "}
                           </Link>
                         );
                       })

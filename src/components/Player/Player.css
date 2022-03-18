@@ -43,7 +43,7 @@
 
 .artist {
   font-size: 12px !important;
-  color: #89868e !important;
+  /* color: #89868e !important; */
   font-weight: 600 !important;
 }
 
@@ -157,4 +157,64 @@
 
 .player.hidden {
   visibility: hidden;
+}
+
+
+/* Responsive */
+
+@media only screen and (max-width: 600px) {
+
+
+  .center__control-item:not(.visible-moblie) {
+    display: none;
+  }
+
+
+
+  .center__slider {
+    position: absolute;
+    top: -3px;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .center__time {
+    display: none;
+  }
+
+  .player__right {
+    display: none;
+  }
+
+  .player__left {
+    width: 100%;
+  }
+  
+}
+
+@media only screen and (max-width: 1024px) {
+
+
+
+
+  .center__slider {
+    position: absolute;
+    top: -3px;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .center__time {
+    display: none;
+  }
+
+  .player__right {
+    display: none;
+  }
+
+  .player__left {
+    width: 100%;
+  }
 }

@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import musicApi from "../../api/musicApi";
 import {
+  setIsPlayingSong,
   setNextSong,
   setPlayingSong,
   setPrevSong,
@@ -30,12 +31,11 @@ function Player(props) {
 
   const playingSong = useSelector((state) => state.music.playingSong);
   const playingPlaylist = useSelector((state) => state.music.playingPlaylist);
-  const urlList = useSelector((state) => state.music.urlList);
 
   const [song, setSong] = useState();
   const [infoSong, setInfoSong] = useState();
 
-  const [valueVolume, setValueVolume] = useState(60);
+  const [valueVolume, setValueVolume] = useState(100);
   const [loading, setLoading] = useState(true);
 
   const [position, setPosition] = useState(0);
@@ -62,6 +62,9 @@ function Player(props) {
         if (response.data === undefined) {
           const result = await axios(response.url);
           setSong(result.data.data);
+          if (result.data.err !== 200) {
+            console.log("Bài này bị lỗi :(( Vui lòng chọn bài khác");
+          }
         } else {
           setSong(response.data);
         }
@@ -74,6 +77,12 @@ function Player(props) {
     };
     getSong();
   }, [playingSong]);
+
+  if (isPlaying) {
+    dispatch(setIsPlayingSong(isPlaying));
+  } else {
+    dispatch(setIsPlayingSong(isPlaying));
+  }
 
   useEffect(() => {
     const getSongInfo = () => {
@@ -228,13 +237,16 @@ function Player(props) {
                 <SkipPreviousIcon />
               </div>
               <div
-                className="center__control-item mid-play"
+                className="center__control-item mid-play visible-moblie"
                 ref={playBtn}
                 onClick={() => setIsPlaying(!isPlaying)}
               >
                 {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
               </div>
-              <div className="center__control-item" onClick={handleNextSong}>
+              <div
+                className="center__control-item visible-moblie"
+                onClick={handleNextSong}
+              >
                 <SkipNextIcon />
               </div>
               <div

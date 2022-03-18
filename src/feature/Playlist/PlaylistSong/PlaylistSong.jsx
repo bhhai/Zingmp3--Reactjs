@@ -7,8 +7,12 @@ function PlaylistSong({ data, playlist, loading }) {
   return (
     <div className="playlist__song">
       <div className="playlist__sort-description">
-        <span>Lời tựa </span>
-        <span className="descript">{playlist.sortDescription}</span>
+        {playlist.sortDescription && (
+          <>
+            <span>Lời tựa </span>
+            <span className="descript">{playlist.sortDescription}</span>
+          </>
+        )}
       </div>
       {data.length > 0 ? (
         <ChartPlayList data={data} icon="true" loading={loading} />
