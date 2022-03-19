@@ -4,8 +4,13 @@ import "./MainButton.css";
 
 MainButton.propTypes = {};
 
-function MainButton({ title }) {
-  return <div className="button">{title}</div>;
+function MainButton({ title, icon }) {
+  return (
+    <div className="button">
+      {icon}
+      <span>{title}</span>
+    </div>
+  );
 }
 
 export default MainButton;

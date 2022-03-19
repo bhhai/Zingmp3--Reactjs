@@ -4,6 +4,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import LeftBar from "./components/LeftBar/LeftBar";
 import Player from "./components/Player/Player";
+import Artist from "./feature/Artist/Artist";
 import Home from "./feature/Home/Home";
 import Playlist from "./feature/Playlist/Playlist";
 import SongDetail from "./feature/SongDetail/SongDetail";
@@ -24,6 +25,7 @@ function App() {
             <Route path="/playlist/:title/:id" element={<Playlist />} />
             <Route path="/album/:title/:id" element={<Playlist />} />
             <Route path="/zing-chart" element={<ZingChartPage />} />
+            <Route path="/nghe-si/:artistName" element={<Artist />} />
           </Routes>
           <Footer />
         </div>

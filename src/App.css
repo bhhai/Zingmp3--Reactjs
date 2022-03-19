@@ -52,8 +52,16 @@ iframe {
     border: 0;
 }
 
+button {
+  background: none;
+  border: none;
+}
+
 /* App style */
 
+.right {
+  position: relative;
+}
 
 .content {
   display: flex;

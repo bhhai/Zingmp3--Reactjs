@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -13,8 +13,22 @@ import SearchIcon from "@mui/icons-material/Search";
 Header.propTypes = {};
 
 function Header(props) {
+  const headerScroll = () => {
+    if (
+      document.body.scrollTop > 50 ||
+      document.documentElement.scrollTop > 50
+    ) {
+      document.getElementById("myHeader").style.backgroundColor = "#170f23";
+    } else {
+      document.getElementById("myHeader").style.backgroundColor = "transparent";
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", headerScroll);
+  });
   return (
-    <div className="header">
+    <div className="header" id="myHeader">
       <div className="header-container">
         <div className="header__left">
           <div className="header__bar">
