@@ -8,23 +8,19 @@ ArtistHero.propTypes = {};
 function ArtistHero({ artist }) {
   const [follow, setFollow] = useState("");
   useEffect(() => {
-    const convertTotalFollow = () => {
-      const fl = artist?.totalFollow.toString();
+    const formatCash = () => {
       if (artist) {
-        if (fl.length > 6) {
-          setFollow(fl.slice(-6) + "M");
-          return fl.slice(-6) + "M";
-        } else if (fl.length > 3) {
-          setFollow(fl.slice(-3) + "K");
+        const n = artist.totalFollow;
 
-          return fl.slice(-3) + "K";
-        }
-      } else {
-        console.log("ko co");
+        if (n < 1e3) return n;
+        if (n >= 1e3 && n < 1e6) setFollow(+(n / 1e3).toFixed(1) + "K");
+        if (n >= 1e6 && n < 1e9) setFollow(+(n / 1e6).toFixed(1) + "M");
+        if (n >= 1e9 && n < 1e12) setFollow(+(n / 1e9).toFixed(1) + "B");
+        if (n >= 1e12) setFollow(+(n / 1e12).toFixed(1) + "T");
       }
     };
 
-    convertTotalFollow();
+    formatCash();
   });
 
   return (
@@ -49,6 +45,20 @@ function ArtistHero({ artist }) {
                     <span>Phát nhạc</span>
                   </div>
                   <div className="btn-artist outline">Quan tâm • {follow}</div>
+                </div>
+                <div className="artist-hero__top-album">
+                  <div className="top-album__banner">
+                    <img src={artist.topAlbum.thumbnail} alt="" />
+                  </div>
+                  <div className="top-album__content">
+                    <span>Mới nhất</span>
+                    <div className="top-album__title">
+                      {artist.topAlbum.title}
+                    </div>
+                    <div className="top-album__release">
+                      {artist.topAlbum.releaseDate}
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="artist-hero__banner">

@@ -1,6 +1,11 @@
 
 /* --artist-bg: rgba(41,21,71,0.8); */
 
+.container-fluid {
+  width: 90%;
+  margin: 60px auto;
+}
+
 .artist-hero__bg {
   min-height: 410px;
   width: 100%;
@@ -114,6 +119,37 @@
 
 }
 
+.artist-hero__top-album {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.top-album__banner {
+  width: 60px;
+  margin-right: 10px;
+}
+
+.top-album__banner img {
+  border-radius: 5px;
+}
+
+.top-album__content span {
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.top-album__title {
+  margin: 5px 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.top-album__release {
+  font-size: 11px;
+  color: hsla(0,0%,100%,0.5);
+}
 
 /* banner */
 
@@ -121,4 +157,38 @@
   text-align: right;
   width: 40%;
 
+}
+
+.artist-hero__banner img {
+  border-radius: 50% ;
+}
+
+
+/* song feature */
+
+.song-feature {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.song-feature__slide {
+  width: 25%;
+}
+
+.song-feature__songs {
+  height: 290px;
+  width: 75%;
+  overflow-y: scroll;
+}
+
+.single {
+  margin-top: 50px;
+}
+
+.single h2 {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 20px;
 }

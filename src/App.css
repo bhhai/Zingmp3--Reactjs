@@ -76,7 +76,7 @@ button {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -85,7 +85,7 @@ button {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #2f2739;
+  background-color: transparent;
 }
 
 @media only screen and (max-width: 1024px) {

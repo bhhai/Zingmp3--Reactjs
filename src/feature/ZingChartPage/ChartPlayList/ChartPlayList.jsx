@@ -12,7 +12,7 @@ import SongSkeleton from "./SongSkeleton";
 
 ChartPlayList.propTypes = {};
 
-function ChartPlayList({ data, loading, icon }) {
+function ChartPlayList({ data, loading, icon, iconNone }) {
   const playingSong = useSelector((state) => state.music.playingSong);
 
   const dispatch = useDispatch();
@@ -49,7 +49,11 @@ function ChartPlayList({ data, loading, icon }) {
               handleSongClick(item.encodeId, item.streamingStatus)
             }
           >
-            <div className="playlist__item-position">
+            <div
+              className={`playlist__item-position ${
+                iconNone ? " icon-none" : ""
+              }`}
+            >
               {icon ? (
                 <LibraryMusicIcon
                   style={{ color: "#837f8a", marginLeft: "10px" }}

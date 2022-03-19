@@ -119,6 +119,7 @@
 
 .chart__thumb-img {
   width: 100%;
+  min-width: 40px;
   border-radius: 5px;
 }
 
@@ -162,4 +163,12 @@
 
 .VIP {
   color: red !important;
+}
+
+.playlist__item-position.icon-none {
+  display: none !important;
+}
+
+.playlist__item-position.icon-none ~ .playlist__item-title {
+  padding-left: 15px;
 }
