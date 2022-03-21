@@ -43,6 +43,10 @@ function Playlist(props) {
     getPlaylist();
   }, [id]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
   return (
     <div className="playlist">
       <div className="playlist-container">
