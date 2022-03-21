@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import AddReactionIcon from "@mui/icons-material/AddReaction";
@@ -9,13 +9,37 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Link } from "react-router-dom";
+import musicApi from "../../../api/musicApi";
+import SwiperCore, { Autoplay, Pagination } from "swiper";
 
 PlaylistArtistSlide.propTypes = {};
 
+SwiperCore.use([Pagination, Autoplay]);
+
 function PlaylistArtistSlide({ data }) {
+  const [artistAlias, setAstistAlias] = useState(null);
+  const [artistInfo, setArtistInfo] = useState(null);
+
+  const swiperRef = useRef(null);
+
+  if (artistAlias) {
+    const getArtist = async () => {
+      const { data } = await musicApi.getArtist(artistAlias);
+
+      setArtistInfo(data);
+    };
+
+    getArtist();
+  }
+
   return (
-    <>
+    <div
+      onMouseEnter={() => swiperRef.current.swiper.autoplay.stop()}
+      onMouseLeave={() => swiperRef.current.swiper.autoplay.start()}
+    >
       <Swiper
+        ref={swiperRef}
+        id="slide"
         spaceBetween={25}
         autoplay={{
           delay: 5000,
@@ -44,11 +68,12 @@ function PlaylistArtistSlide({ data }) {
                 </div>
               </Link>
               <div className="artist__content">
-                <Link to={item.link}>
+                <Link to={item.link} id="artist__hover">
                   <h4 className="artist__name artist__btn">{item.name}</h4>
+                  <div className="artist__box-hover" id="hover"></div>
                 </Link>
                 <span className="artist__follower">
-                  {item?.totalFollow.toString().slice(-3) + "K quan tâm"}
+                  {item?.totalFollow + " người quan tâm"}
                 </span>
                 <div className="artist__btn-fl">
                   <AddReactionIcon fontSize="small" />
@@ -58,7 +83,7 @@ function PlaylistArtistSlide({ data }) {
             </SwiperSlide>
           ))}
       </Swiper>
-    </>
+    </div>
   );
 }
 

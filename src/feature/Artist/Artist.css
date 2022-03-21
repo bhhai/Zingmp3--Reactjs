@@ -45,6 +45,7 @@
   position: absolute;
   z-index: 10;
   bottom: 40px;
+  min-width: 100%;
 }
 
 .hero-artist__container {

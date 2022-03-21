@@ -1,16 +1,17 @@
-.button {
+.button-main {
   margin-top: 5px; 
   border-radius: 999px; 
   color: #fff;
   border: none;
-  padding: 6px 20px;
+  padding: 8px 20px;
   text-align: center;
   background-color: #7200a1;
-  cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.button:hover {
+.button-main:hover {
   background-color: #670091;
 }

@@ -6,7 +6,7 @@ MainButton.propTypes = {};
 
 function MainButton({ title, icon }) {
   return (
-    <div className="button">
+    <div className="button-main">
       {icon}
       <span>{title}</span>
     </div>

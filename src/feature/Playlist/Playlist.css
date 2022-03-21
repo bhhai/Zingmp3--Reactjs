@@ -120,6 +120,8 @@
 .artist__thumb {
   border-radius: 50%;
   overflow: hidden;
+  display: flex;
+  align-items: stretch;
 }
 
 .artist__thumb img{
@@ -292,4 +294,25 @@
   .playlist__item-title {
     width: 90% !important;
   }
+}
+
+
+/* artist hover */
+
+#artist__hover {
+  position: relative;
+}
+
+.artist__box-hover {
+  height: 300px;
+  width: 300px;
+  display: none;
+  background-color: red;
+  position: absolute;
+  bottom: 30px;
+  z-index: 999999 !important;
+}
+
+#artist__hover:hover .artist__box-hover{
+  display: block;
 }

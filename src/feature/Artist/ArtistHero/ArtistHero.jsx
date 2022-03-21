@@ -37,7 +37,8 @@ function ArtistHero({ artist }) {
               <div>
                 <h3 className="artist-hero__title">{artist?.name}</h3>
                 <div className="artist-hero__description">
-                  {artist?.sortBiography} <span>XEM THÊM</span>
+                  {artist?.sortBiography}
+                  {artist?.sortBiography && <span>XEM THÊM</span>}
                 </div>
                 <div className="artist-hero__bottom-btn">
                   <div className="btn-artist">
