@@ -7,6 +7,7 @@ import Player from "./components/Player/Player";
 import Artist from "./feature/Artist/Artist";
 import Home from "./feature/Home/Home";
 import Playlist from "./feature/Playlist/Playlist";
+import Search from "./feature/Search/Search";
 import SongDetail from "./feature/SongDetail/SongDetail";
 import ZingChartPage from "./feature/ZingChartPage/ZingChartPage";
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/album/:title/:id" element={<Playlist />} />
             <Route path="/zing-chart" element={<ZingChartPage />} />
             <Route path="/nghe-si/:artistName" element={<Artist />} />
+            <Route path="/tim-kiem/query=:name" element={<Search />} />
           </Routes>
           <Footer />
         </div>

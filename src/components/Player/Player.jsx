@@ -57,20 +57,20 @@ function Player(props) {
   useEffect(() => {
     const getSong = async () => {
       try {
-        const response = await musicApi.getSong(playingSong);
+        if (playingSong) {
+          const response = await musicApi.getSong(playingSong);
 
-        if (response.data === undefined) {
-          const result = await axios(response.url);
-          setSong(result.data.data);
-          if (result.data.err !== 200) {
-            console.log("Bài này bị lỗi :(( Vui lòng chọn bài khác");
+          if (response.data === undefined) {
+            const result = await axios(response.url);
+            setSong(result.data.data);
+            if (response.err === -1110) alert(response.msg);
+          } else {
+            setSong(response.data);
           }
-        } else {
-          setSong(response.data);
-        }
 
-        if (playingSong) setIsPlaying(true);
-        setLoading(false);
+          if (playingSong) setIsPlaying(true);
+          setLoading(false);
+        }
       } catch (error) {
         console.log(error);
       }

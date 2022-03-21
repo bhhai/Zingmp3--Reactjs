@@ -30,15 +30,7 @@ function LeftBar(props) {
         <Avatar className="left__mobile-avt">H</Avatar>
       </div>
       <div className="left__menu">
-        <NavLink to="/search" className="menu__item">
-          <SearchIcon />
-          <span>Tìm kiếm</span>
-        </NavLink>
         <NavLink to="/" className="menu__item">
-          <HomeIcon />
-          <span>Trang chủ</span>
-        </NavLink>
-        <NavLink to="/kham-pha" className="menu__item">
           <ExploreIcon />
           <span>Khám phá</span>
         </NavLink>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -13,6 +13,8 @@ import SearchIcon from "@mui/icons-material/Search";
 Header.propTypes = {};
 
 function Header(props) {
+  const [search, setSearch] = useState("");
+
   const headerScroll = () => {
     if (
       document.body.scrollTop > 50 ||
@@ -27,6 +29,16 @@ function Header(props) {
   useEffect(() => {
     window.addEventListener("scroll", headerScroll);
   });
+
+  const handle = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+
+    window.location.href = `/tim-kiem/query=${search}`;
+  };
   return (
     <div className="header" id="myHeader">
       <div className="header-container">
@@ -35,13 +47,17 @@ function Header(props) {
             <ArrowBackIcon />
             <ArrowForwardIcon />
           </div>
-          <div className="header__search">
+          <form
+            className="header__search"
+            onSubmit={(e) => handleSearchSubmit(e)}
+          >
             <input
               type="text"
               placeholder="Nhập tên bài hát, nghệ sĩ hoặc MV..."
+              onChange={(e) => handle(e)}
             />
             <SearchIcon className="search-icon" />
-          </div>
+          </form>
         </div>
         <div className="header__right">
           <IconButton>
