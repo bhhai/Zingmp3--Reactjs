@@ -45,9 +45,7 @@ function ChartPlayList({ data, loading, icon, iconNone }) {
               playingSong === item.encodeId ? "playing-active" : ""
             } ${item.streamingStatus !== 1 ? " VIP" : ""}`}
             data-key={item.encodeId}
-            onClick={(id, songStatus) =>
-              handleSongClick(item.encodeId, item.streamingStatus)
-            }
+            onClick={() => handleSongClick(item.encodeId, item.streamingStatus)}
           >
             <div
               className={`playlist__item-position ${
@@ -86,7 +84,7 @@ function ChartPlayList({ data, loading, icon, iconNone }) {
               <div className="playlist__name">
                 <span>{item?.title}</span>
                 <div className="playlist__artist">
-                  {item?.artists.length > 1
+                  {item.artists !== undefined && item?.artists.length > 1
                     ? item.artists.map((art, i) => {
                         return (
                           <Link to={art.link} key={art.id} className="artist">
@@ -96,7 +94,8 @@ function ChartPlayList({ data, loading, icon, iconNone }) {
                           </Link>
                         );
                       })
-                    : item?.artists.map((art, i) => (
+                    : item.artists !== undefined &&
+                      item?.artists.map((art, i) => (
                         <Link to={art.link} key={art.id} className="artist">
                           {art.name}
                         </Link>
