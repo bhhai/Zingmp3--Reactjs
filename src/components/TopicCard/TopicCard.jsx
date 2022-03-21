@@ -28,6 +28,7 @@ function TopicCard({
               alt=""
             />
           }
+          style={{ display: "flex", alignItems: "stretch" }}
         >
           <img src={src} alt={title} className="topic__image" />
         </LazyLoad>
