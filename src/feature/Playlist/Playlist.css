@@ -299,20 +299,68 @@
 
 /* artist hover */
 
-#artist__hover {
-  position: relative;
+
+.modal__hover {
+  background-image: linear-gradient(to top, #7200a1 , #c662ef);
+  width: 350px;
 }
 
-.artist__box-hover {
-  height: 300px;
-  width: 300px;
-  display: none;
-  background-color: red;
-  position: absolute;
-  bottom: 30px;
-  z-index: 999999 !important;
+.modal__name {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
 }
 
-#artist__hover:hover .artist__box-hover{
-  display: block;
+.modal__thumb {
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.modal__name-content {
+  display: flex;
+  align-items: center;
+}
+
+.modal__title {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.modal__title-name {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.modal__follow {
+  font-size: 12px;
+  color: hsla(0,0%,100%,0.5);
+}
+
+.modal__album {
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.modal__single {
+  margin-top: 5px;
+}
+
+.thumb {
+  width: 70px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 5px;
 }
