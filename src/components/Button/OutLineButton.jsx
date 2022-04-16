@@ -4,8 +4,12 @@ import "./OutLine.css";
 
 OutLineButton.propTypes = {};
 
-function OutLineButton({ title }) {
-  return <div className="button">{title}</div>;
+function OutLineButton({ title, onClick }) {
+  return (
+    <div className="button" onClick={onClick}>
+      {title}
+    </div>
+  );
 }
 
 export default OutLineButton;

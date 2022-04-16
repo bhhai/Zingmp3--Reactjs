@@ -124,6 +124,14 @@ export function LineChart({ props }) {
           datalabels: {
             display: false,
           },
+          tooltip: {
+            mode: "index",
+            intersect: false,
+          },
+        },
+        hover: {
+          mode: "nearest",
+          intersect: true,
         },
         scales: {
           y: {

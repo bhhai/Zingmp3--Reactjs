@@ -49,21 +49,27 @@ function ArtistHero({ artist }) {
                 </div>
                 <div className="artist-hero__top-album">
                   <div className="top-album__banner">
-                    <img src={artist.topAlbum.thumbnail} alt="" />
+                    <img
+                      src={
+                        artist.topAlbum?.thumbnail ||
+                        artist.topAlbum?.thumbnailM
+                      }
+                      alt=""
+                    />
                   </div>
                   <div className="top-album__content">
                     <span>Mới nhất</span>
                     <div className="top-album__title">
-                      {artist.topAlbum.title}
+                      {artist.topAlbum?.title}
                     </div>
                     <div className="top-album__release">
-                      {artist.topAlbum.releaseDate}
+                      {artist.topAlbum?.releaseDate}
                     </div>
                   </div>
                 </div>
               </div>
               <div className="artist-hero__banner">
-                <img src={artist.thumbnail} alt={artist.name} />
+                <img src={artist?.thumbnail} alt={artist?.name} />
               </div>
             </div>
           </div>

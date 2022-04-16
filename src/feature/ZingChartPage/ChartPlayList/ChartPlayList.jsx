@@ -1,12 +1,12 @@
+import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import RemoveIcon from "@mui/icons-material/Remove";
-import React from "react";
+import { Button } from "@mui/material";
+import React, { useState } from "react";
+import LazyLoad from "react-lazyload";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setPlayingSong } from "../musicSlice";
-import AudiotrackIcon from "@mui/icons-material/Audiotrack";
-import LazyLoad from "react-lazyload";
-import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
+import OutLineButton from "../../../components/Button/OutLineButton";
 import "./ChartPlayList.css";
 import SongSkeleton from "./SongSkeleton";
 
@@ -14,6 +14,7 @@ ChartPlayList.propTypes = {};
 
 function ChartPlayList({ data, loading, icon, iconNone }) {
   const playingSong = useSelector((state) => state.music.playingSong);
+  const [itemShow, setItemShow] = useState(10);
 
   const dispatch = useDispatch();
 
@@ -33,12 +34,16 @@ function ChartPlayList({ data, loading, icon, iconNone }) {
     }
   };
 
+  const handelShowMoreSong = () => {
+    setItemShow(data.length);
+  };
+
   return (
     <div className="chart-page__playlist">
       {loading ? (
         <SongSkeleton length={10} />
       ) : (
-        data.map((item, i) => (
+        data.slice(0, itemShow).map((item, i) => (
           <div
             key={i}
             className={`chart-playlist__item ${
@@ -114,6 +119,13 @@ function ChartPlayList({ data, loading, icon, iconNone }) {
             </div>
           </div>
         ))
+      )}
+      {itemShow === 10 ? (
+        <div className="chart-page__more-btn">
+          <OutLineButton onClick={handelShowMoreSong} title="Xem top 100" />
+        </div>
+      ) : (
+        ""
       )}
     </div>
   );

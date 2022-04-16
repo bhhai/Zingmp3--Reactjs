@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import "./Header.css";
-import { IconButton } from "@mui/material";
-import UploadIcon from "@mui/icons-material/Upload";
+import SearchIcon from "@mui/icons-material/Search";
 import SettingsIcon from "@mui/icons-material/Settings";
 import TopicIcon from "@mui/icons-material/Topic";
-import SearchIcon from "@mui/icons-material/Search";
+import UploadIcon from "@mui/icons-material/Upload";
+import { IconButton } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Header.css";
 
 Header.propTypes = {};
 
 function Header(props) {
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
 
   const headerScroll = () => {
@@ -37,7 +38,7 @@ function Header(props) {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
 
-    window.location.href = `/tim-kiem/query=${search}`;
+    navigate(`/tim-kiem/query=${search}`);
   };
   return (
     <div className="header" id="myHeader">

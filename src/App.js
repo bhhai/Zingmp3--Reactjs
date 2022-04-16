@@ -26,6 +26,7 @@ function App() {
             <Route path="/playlist/:title/:id" element={<Playlist />} />
             <Route path="/album/:title/:id" element={<Playlist />} />
             <Route path="/zing-chart" element={<ZingChartPage />} />
+            <Route path="/:artistName" element={<Artist />} />
             <Route path="/nghe-si/:artistName" element={<Artist />} />
             <Route path="/tim-kiem/query=:name" element={<Search />} />
           </Routes>

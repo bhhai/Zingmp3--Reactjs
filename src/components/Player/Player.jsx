@@ -1,16 +1,17 @@
 import FitScreenIcon from "@mui/icons-material/FitScreen";
 import MicExternalOnIcon from "@mui/icons-material/MicExternalOn";
 import MusicVideoIcon from "@mui/icons-material/MusicVideo";
+import PauseIcon from "@mui/icons-material/Pause";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import QueueMusicIcon from "@mui/icons-material/QueueMusic";
 import RepeatIcon from "@mui/icons-material/Repeat";
+import RepeatOneIcon from "@mui/icons-material/RepeatOne";
 import ShuffleIcon from "@mui/icons-material/Shuffle";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
-import RepeatOneIcon from "@mui/icons-material/RepeatOne";
 import VolumeUp from "@mui/icons-material/VolumeUp";
-import PauseIcon from "@mui/icons-material/Pause";
 import { Slider } from "@mui/material";
+import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -22,7 +23,6 @@ import {
   setPrevSong,
 } from "../../feature/ZingChartPage/musicSlice";
 import "./Player.css";
-import axios from "axios";
 
 Player.propTypes = {};
 

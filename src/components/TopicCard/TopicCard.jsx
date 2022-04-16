@@ -4,6 +4,7 @@ import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import React from "react";
 import LazyLoad from "react-lazyload";
 import { Link } from "react-router-dom";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import "./TopicCard.css";
 
 TopicCard.propTypes = {};
@@ -34,11 +35,9 @@ function TopicCard({
         </LazyLoad>
         <div className="topic__icon">
           <FavoriteBorderIcon />
-          <PlayCircleOutlineIcon
-            fontSize="medium"
-            style={{ width: "50px", height: "50px" }}
-            className="topic__play-icon"
-          />
+          <div className="topic__playIcon">
+            <PlayArrowIcon />
+          </div>
           <MoreHorizIcon />
         </div>
         <div className="overlay"></div>
