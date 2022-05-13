@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setPlayingSong } from "../musicSlice";
 import OutLineButton from "../../../components/Button/OutLineButton";
+import RemoveIcon from "@mui/icons-material/Remove";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import "./ChartPlayList.css";
 import SongSkeleton from "./SongSkeleton";
 
@@ -62,7 +65,35 @@ function ChartPlayList({ data, loading, icon, iconNone }) {
                   style={{ color: "#837f8a", marginLeft: "10px" }}
                 />
               ) : (
-                <span>{i + 1}</span>
+                <>
+                  <span
+                    className={`${
+                      i === 0
+                        ? "item-top1"
+                        : "" || i === 1
+                        ? "item-top2"
+                        : "" || i === 2
+                        ? "item-top3"
+                        : ""
+                    }`}
+                  >
+                    {i + 1}
+                  </span>
+                  <i className="icon-right">
+                    {item.rakingStatus === 0 ? (
+                      <RemoveIcon />
+                    ) : (
+                      <i className="icon-raking">
+                        {item.rakingStatus > 0 ? (
+                          <ArrowDropUpIcon className="up" />
+                        ) : (
+                          <ArrowDropDownIcon className="down" />
+                        )}
+                        {Math.abs(item.rakingStatus)}
+                      </i>
+                    )}
+                  </i>
+                </>
               )}
             </div>
             <div className="playlist__item-title">
