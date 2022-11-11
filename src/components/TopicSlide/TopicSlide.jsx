@@ -12,9 +12,10 @@ import "./TopicSlide.css";
 TopicSlide.propTypes = {};
 
 function TopicSlide({ data, loading }) {
+  console.log(data)
   return (
     <div>
-      <Swiper
+      {/* <Swiper
         spaceBetween={25}
         autoplay={{
           delay: 5000,
@@ -35,31 +36,8 @@ function TopicSlide({ data, loading }) {
         }}
       >
         {loading
-          ? Array.from(new Array(8)).map((x, i) => (
-              <SwiperSlide key={i}>
-                <div key={i} className="topic">
-                  <div className="topic__thumbnail">
-                    <Skeleton
-                      variant="rectangular"
-                      height="215px"
-                      width="100%"
-                    />
-                  </div>
-                  <div className="topic__title" style={{ margin: "10px 0" }}>
-                    <Skeleton animation="wave" height="20px" width="50%" />
-                  </div>
-                  <span className="topic__description">
-                    <Skeleton animation="wave" height="14px" width="100%" />
-                    <Skeleton
-                      animation="wave"
-                      height="14px"
-                      width={`${Math.random() * 100}%`}
-                    />
-                  </span>
-                </div>
-              </SwiperSlide>
-            ))
-          : data &&
+          ? <h1>Loading</h1>
+          : 
             data.map((item, index) => (
               <SwiperSlide key={index}>
                 <TopicCard
@@ -75,8 +53,23 @@ function TopicSlide({ data, loading }) {
                   loading={loading}
                 />
               </SwiperSlide>
+            )) || data?.vPop.map((item, index) => (
+              <SwiperSlide key={index}>
+                <TopicCard
+                  src={item.thumbnailM || item.thumbnail || item.thumbURL}
+                  title={item.title}
+                  playlistKey={item.encodeId}
+                  description={
+                    item.sortDescription ||
+                    item.releaseDate ||
+                    item.activeUsers + " đang nghe"
+                  }
+                  link={item.link}
+                  loading={loading}
+                />
+              </SwiperSlide>
             ))}
-      </Swiper>
+      </Swiper> */}
     </div>
   );
 }

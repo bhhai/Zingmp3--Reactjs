@@ -18,11 +18,11 @@ const musicApi = {
     return axiosClient.get(url);
   },
   getCharthome: () => {
-    const url = "chart-home";
+    const url = "charthome";
     return axiosClient.get(url);
   },
   getInfoSong: (id) => {
-    const url = "info?id=" + id;
+    const url = "infosong?id=" + id;
     return axiosClient.get(url, id);
   },
   getArtist: async (name) => {
@@ -38,11 +38,11 @@ const musicApi = {
     return await axiosClient.get(url, keyword);
   },
   getListMV: async (id, page, count) => {
-    const url = "listMV?id=" + id + "&page=" + page + "&count=" + count;
+    const url = "listmv?id=" + id + "&page=" + page + "&count=" + count;
     return await axiosClient.get(url, id, page, count);
   },
   getCategoryMV: async (id) => {
-    const url = "category?id=" + id;
+    const url = "categorymv?id=" + id;
     return await axiosClient.get(url, id);
   },
   getVideo: async (id) => {

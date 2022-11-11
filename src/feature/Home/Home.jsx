@@ -27,8 +27,8 @@ function Home(props) {
       try {
         const zingChart = await musicApi.getCharthome();
 
-        setZingChart(zingChart.data.RTChart);
-        setWeekChart(Object.values(zingChart.data.weekChart));
+        // setZingChart(zingChart?.data?.RTChart);
+        // setWeekChart(Object.values(zingChart?.data?.weekChart));
       } catch (error) {
         console.log(error);
       }

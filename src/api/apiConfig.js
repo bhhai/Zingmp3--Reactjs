@@ -1,5 +1,5 @@
 const apiConfig = {
-  baseUrl: "https://music-player-pink.vercel.app/api/",
+  baseUrl: "https://apizingmp3.herokuapp.com/api/",
 };
 
 export default apiConfig;
