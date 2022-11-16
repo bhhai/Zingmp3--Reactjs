@@ -151,13 +151,13 @@ function ChartPlayList({ data, loading, icon, iconNone }) {
           </div>
         ))
       )}
-      {/* {window?.location?.pathname &&
+      {window?.location?.pathname &&
       window?.location?.pathname === "/zing-chart" &&
       itemShow === 10 ? (
         <div className="chart-page__more-btn">
           <OutLineButton onClick={handelShowMoreSong} title="Xem top 100" />
         </div>
-      ) : null} */}
+      ) : null}
     </div>
   );
 }

@@ -36,6 +36,12 @@ function Search(props) {
     getData();
   }, [name]);
 
+  if(!songs && !top && !playList && !video && !artist) {
+    return (
+      <h4 style={{color: "#fff", marginLeft: "40px", marginTop: "30px"}}>Không có kết quả tìm kiếm hợp lệ!</h4>
+    )
+  }
+
   return (
     <div className="search">
       <div className="search__container">
