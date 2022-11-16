@@ -29,11 +29,11 @@ function Playlist(props) {
       try {
         const res = await musicApi.getPlaylist(id.split(".")[0]);
 
-        setPlaylist(res.data);
-        setPlaylistSOng(res.data.song.items);
-        setArtists(res.data?.artists);
+        setPlaylist(res?.data);
+        setPlaylistSOng(res?.data?.song?.items);
+        setArtists(res?.data?.artists);
 
-        dispatch(setPlayingPlaylist(res.data.song.items));
+        dispatch(setPlayingPlaylist(res?.data?.song?.items));
         setLoading(false);
       } catch (error) {
         console.log(error);

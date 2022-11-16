@@ -158,7 +158,7 @@ function Player(props) {
   useEffect(() => {
     handle.start();
   }, [
-    playingPlaylist.length,
+    playingPlaylist?.length,
     playingSong,
     handle.isRepeat,
     handle.isRandom,

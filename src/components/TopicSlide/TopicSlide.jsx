@@ -1,5 +1,5 @@
 import { Skeleton } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TopicCard from "../TopicCard/TopicCard";
 // Import Swiper styles
 import "swiper/css";
@@ -12,10 +12,11 @@ import "./TopicSlide.css";
 TopicSlide.propTypes = {};
 
 function TopicSlide({ data, loading }) {
-  console.log(data)
+ 
+
   return (
     <div>
-      {/* <Swiper
+      <Swiper
         spaceBetween={25}
         autoplay={{
           delay: 5000,
@@ -38,7 +39,7 @@ function TopicSlide({ data, loading }) {
         {loading
           ? <h1>Loading</h1>
           : 
-            data.map((item, index) => (
+            data?.length ? data.map((item, index) => (
               <SwiperSlide key={index}>
                 <TopicCard
                   src={item.thumbnailM || item.thumbnail || item.thumbURL}
@@ -53,23 +54,23 @@ function TopicSlide({ data, loading }) {
                   loading={loading}
                 />
               </SwiperSlide>
-            )) || data?.vPop.map((item, index) => (
-              <SwiperSlide key={index}>
+            )) : data?.all.map((el, i) => (
+              <SwiperSlide key={i}>
                 <TopicCard
-                  src={item.thumbnailM || item.thumbnail || item.thumbURL}
-                  title={item.title}
-                  playlistKey={item.encodeId}
+                  src={el.thumbnailM || el.thumbnail || el.thumbURL}
+                  title={el.title}
+                  playlistKey={el.encodeId}
                   description={
-                    item.sortDescription ||
-                    item.releaseDate ||
-                    item.activeUsers + " đang nghe"
+                    el.sortDescription ||
+                    el.releaseDate ||
+                    el.activeUsers + " đang nghe"
                   }
-                  link={item.link}
+                  link={el.link}
                   loading={loading}
                 />
               </SwiperSlide>
             ))}
-      </Swiper> */}
+      </Swiper>
     </div>
   );
 }
